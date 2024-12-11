@@ -1,0 +1,11 @@
+
+services:
+  app:
+    build: ./
+    container_name: coco_shop_frontend
+    ports:
+     - ${PORT}:${PORT}
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true

@@ -1,0 +1,10 @@
+{
+    "mainPage": {
+        "cases": "Cases",
+        "headphones": "Headphones",
+        "wirelessHeadphones" : "Wireless headphones"
+    },
+    "cartPage": {
+        "cart": "Cart"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "mainPage": {
+        "cases": "Чехлы",
+        "headphones": "Наушники",
+        "wirelessHeadphones" : "Беспроводные наушники"
+    },
+    "cartPage": {
+        "cart": "Корзина"
+    }
+}
