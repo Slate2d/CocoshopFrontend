@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../css/product.css"
 
 const LikedPage = () => (
   <div>
