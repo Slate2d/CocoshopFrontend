@@ -1,14 +1,13 @@
 import React from 'react';
 import './../css/stylemain.css';
 import '../css/product.css';
-import png2 from '../images/2.jpg';
+import png2 from '../images/iPhone-13-Pro-Max-silver-1000x1000 1.png';
 import { useTranslation } from 'react-i18next';
 import CategoryProduct from '../components/CategoryProduct';
 import NormalProduct from '../components/NormalProduct';
 
 const MainPage = () => {
   const { t } = useTranslation();
-
   const cases = [
     {
       imgSrc: require('../images/10.jpg'),
@@ -99,7 +98,7 @@ const MainPage = () => {
         <h2>{t('mainPage.headphones')}</h2>
         <div className="product-grid">
           {headphones.map((product, index) => (
-            <NormalProduct key={index} {...product} />
+            <NormalProduct key={index} {...product}  />
           ))}
         </div>
 

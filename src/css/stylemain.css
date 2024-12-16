@@ -149,7 +149,7 @@ body {
     justify-content: space-between;
     background-color: #000;
     border-radius: 20px;
-    padding: 20px;
+    padding-left: 10px;
     width: 100%;
     max-width: 1000px;
     margin: 50px auto;
@@ -159,17 +159,17 @@ body {
     font-size: 28px;
     font-weight: 500;
 }
-
+.image-container {
+    align-self: flex-end;
+    padding: 0px;
+    margin-bottom: 0px;
+}
 .image-container img {
-    max-width: 150px;
+    max-width: 250px;
     border-radius: 10px;
     background: none;
 }
-.container1 {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-}
+
 
 h2 {
     margin-bottom: 40px;

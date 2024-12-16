@@ -1,7 +1,9 @@
 import React from 'react';
+import '../css/product.css';
 
 const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating }) => {
   return (
+    <div className='product-grid'>
     <div className="product-card">
       <a href="#">
         <img src={imgSrc} alt={altText} />
@@ -37,6 +39,7 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating }
           />
         </button>
       </div>
+    </div>
     </div>
   );
 };

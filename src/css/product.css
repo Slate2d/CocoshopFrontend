@@ -1,3 +1,8 @@
+.container1 {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,6 +22,7 @@
 
 .product-card img {
     max-width: 100px;
+    height: 110px;
     margin-bottom: 10px;
 }
 
