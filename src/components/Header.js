@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => (
   <header className="header">
     <div className="logo">
-      <h1>COCO SHOP</h1>
+    <a href="/"><h1>COCO SHOP</h1></a>
     </div>
     <div className="SELECTOR">
       <i className="phone-icon">&#128241;</i>

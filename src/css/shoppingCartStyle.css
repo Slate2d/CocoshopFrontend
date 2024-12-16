@@ -178,6 +178,10 @@
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cart-image {
@@ -196,7 +200,8 @@
 }
 
 .btn {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     background-color: #000;
     color: white;
     padding: 10px 20px;
@@ -204,6 +209,12 @@
     text-decoration: none;
     font-size: 16px;
     margin-top: 20px;
+}
+.cart-empty a {
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn:hover {

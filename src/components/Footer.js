@@ -35,7 +35,7 @@ const Footer = () => {
     <footer>
       <div className="footer-container">
         <div className="footer-left">
-          <h1>COCO SHOP</h1>
+          <a href="/"><h1>COCO SHOP</h1></a>
         </div>
         <div className="footer-center">
           <Link to="/liked" className="footer-btn">Избранное</Link>
