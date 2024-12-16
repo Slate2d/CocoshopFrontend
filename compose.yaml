@@ -4,7 +4,7 @@ services:
     build: ./
     container_name: coco_shop_frontend
     ports:
-     - ${PORT}:${PORT}
+     - 3000:3000
     volumes:
       - ./:/app
     stdin_open: true
