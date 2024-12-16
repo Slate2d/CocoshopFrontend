@@ -64,6 +64,17 @@ const MainPage = () => {
                   }}
                 />
               </button>
+              <button>
+                <img
+                  src={require('../images/free-icon-add-to-favorites-4989206.png')}
+                  alt="Add to Cart"
+                  style={{
+                    width: '15px',
+                    height: '15px',
+                    marginRight: '0px',
+                  }}
+                />
+              </button>
             </div>
           </div>
 
@@ -84,6 +95,17 @@ const MainPage = () => {
                   style={{
                     width: '20px',
                     height: '20px',
+                    marginRight: '0px',
+                  }}
+                />
+              </button>
+              <button>
+                <img
+                  src={require('../images/free-icon-add-to-favorites-4989206.png')}
+                  alt="Add to Cart"
+                  style={{
+                    width: '15px',
+                    height: '15px',
                     marginRight: '0px',
                   }}
                 />
@@ -112,6 +134,17 @@ const MainPage = () => {
                   style={{
                     width: '20px',
                     height: '20px',
+                    marginRight: '0px',
+                  }}
+                />
+              </button>
+              <button>
+                <img
+                  src={require('../images/free-icon-add-to-favorites-4989206.png')}
+                  alt="Add to Cart"
+                  style={{
+                    width: '15px',
+                    height: '15px',
                     marginRight: '0px',
                   }}
                 />
@@ -145,6 +178,17 @@ const MainPage = () => {
                   }}
                 />
               </button>
+              <button>
+                <img
+                  src={require('../images/free-icon-add-to-favorites-4989206.png')}
+                  alt="Add to Cart"
+                  style={{
+                    width: '15px',
+                    height: '15px',
+                    marginRight: '0px',
+                  }}
+                />
+              </button>
             </div>
           </div>
           <div className="product-card">
@@ -168,12 +212,23 @@ const MainPage = () => {
                   }}
                 />
               </button>
+              <button>
+                <img
+                  src={require('../images/free-icon-add-to-favorites-4989206.png')}
+                  alt="Add to Cart"
+                  style={{
+                    width: '15px',
+                    height: '15px',
+                    marginRight: '0px',
+                  }}
+                />
+              </button>
             </div>
           </div>
 
           <div className="product-card">
             <a href="#">
-              <img src={require('../images/4.jpg')} alt="Apple EarPods Box" />
+              <img src={require('../images/4.jpg')} alt="Apple EarPods Box" style={{height: '110px'}}/>
               <p>Apple EarPods</p>
               <div className="product-info">
                 <span className="rating">4.5</span>
@@ -188,6 +243,17 @@ const MainPage = () => {
                   style={{
                     width: '20px',
                     height: '20px',
+                    marginRight: '0px',
+                  }}
+                />
+              </button>
+              <button>
+                <img
+                  src={require('../images/free-icon-add-to-favorites-4989206.png')}
+                  alt="Add to Cart"
+                  style={{
+                    width: '15px',
+                    height: '15px',
                     marginRight: '0px',
                   }}
                 />

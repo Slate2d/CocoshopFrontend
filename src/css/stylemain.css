@@ -216,6 +216,7 @@ h2 {
     background: none;
     border: none;
     cursor: pointer;
+    padding: 10px;
 }
 
 .product-info {
