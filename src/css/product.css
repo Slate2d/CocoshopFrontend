@@ -4,7 +4,8 @@
     padding: 20px;
 }
 .product-grid {
-    display: grid;
+    display: flex;
+    overflow-x: scroll;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
@@ -89,3 +90,12 @@
     height: 24px;
     transition: transform 0.3s; /* Плавная анимация для значка */
 }
+.cart-button.active {
+    background-color: green;
+    color: white;
+  }
+  
+  .favourite-button.active {
+    background-color: red;
+    color: white;
+  }

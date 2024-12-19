@@ -3,8 +3,8 @@ import './../css/stylemain.css';
 import '../css/product.css';
 import png2 from '../images/iPhone-13-Pro-Max-silver-1000x1000 1.png';
 import { useTranslation } from 'react-i18next';
-import CategoryProduct from '../components/CategoryProduct';
-import NormalProduct from '../components/NormalProduct';
+import CategoryProduct from './CategoryProduct';
+import NormalProduct from './NormalProduct';
 
 const MainPage = () => {
   const { t } = useTranslation();

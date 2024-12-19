@@ -25,16 +25,18 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-        <Route path="/liked" element={<LikedPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div className="app-container">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/liked" element={<LikedPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 

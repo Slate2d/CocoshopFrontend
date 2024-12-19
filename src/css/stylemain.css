@@ -15,6 +15,11 @@ a {
 a:hover p, a:focus p {
     color: #FFD700; /* Цвет подсветки (например, золотой) */
 }
+
+.app-container{
+    margin: 0 auto;
+    max-width: 1200px;
+}
 .header {
     background-color: #e8e8e8; /* Светлый фон панели */
     display: flex;
