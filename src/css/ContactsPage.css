@@ -1,0 +1,45 @@
+.contacts-page {
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .contacts-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .map-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .address-container {
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .social-btn:hover {
+    transform: scale(1.1);
+  }
+  

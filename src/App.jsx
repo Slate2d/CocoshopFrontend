@@ -8,6 +8,8 @@ import ShoppingCart from "./components/ShoppingCart";
 import LikedPage from "./components/LikedPage";
 import LoginPage from "./components/LoginPage";
 import i18next from './i18n';
+import TermsPage from "./components/TermsOfService";
+import ContactsPage from "./components/ContactsPage";
 
 const App = () => {
  
@@ -33,6 +35,8 @@ const App = () => {
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/liked" element={<LikedPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
         <Footer />
       </Router>

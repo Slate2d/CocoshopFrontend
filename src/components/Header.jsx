@@ -19,11 +19,9 @@ const Header = () => (
     <div className="icons">
       <Link to="/liked" className="icon wishlist">
         <i className="heart-icon">&#9829;</i>
-        <span className="badge">2</span>
       </Link>
       <Link to="/cart" className="icon cart">
         <i className="cart-icon">&#128722;</i>
-        <span className="badge">1</span>
       </Link>
     </div>
   </header>
