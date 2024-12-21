@@ -7,9 +7,12 @@ import MainPage from "./components/MainPage";
 import ShoppingCart from "./components/ShoppingCart";
 import LikedPage from "./components/LikedPage";
 import LoginPage from "./components/LoginPage";
+import RegisterPage from "./components/RegisterPage";
 import i18next from './i18n';
 import TermsPage from "./components/TermsOfService";
 import ContactsPage from "./components/ContactsPage";
+import EmailVerificationPage from "./components/EmailVerificationPage";
+import VerifyPendingPage from "./components/VerifyPendingPage";
 
 const App = () => {
  
@@ -35,6 +38,9 @@ const App = () => {
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/liked" element={<LikedPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/verify-pending" element={<VerifyPendingPage />} />
+          <Route path="/verify-email/:token" element={<EmailVerificationPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>

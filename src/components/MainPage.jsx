@@ -3,7 +3,6 @@ import './../css/stylemain.css';
 import '../css/product.css';
 import png2 from '../images/iPhone-13-Pro-Max-silver-1000x1000 1.png';
 import { useTranslation } from 'react-i18next';
-import CategoryProduct from './CategoryProduct';
 import NormalProduct from './NormalProduct';
 import { getProducts } from '../api/api';
 
@@ -13,7 +12,6 @@ const MainPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch products on component mount
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -31,7 +29,6 @@ const MainPage = () => {
     fetchProducts();
   }, []);
 
-  // Group products by brand
   const groupedProducts = products.reduce((acc, product) => {
     const brandName = product.brand.name;
     if (!acc[brandName]) {
@@ -40,6 +37,12 @@ const MainPage = () => {
     acc[brandName].push(product);
     return acc;
   }, {});
+
+  const scrollContainer = (id, direction) => {
+    const container = document.getElementById(id);
+    const scrollAmount = direction === 'left' ? -300 : 300;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
 
   if (loading) {
     return <div className="loading">Loading products...</div>;
@@ -64,18 +67,32 @@ const MainPage = () => {
         {Object.entries(groupedProducts).map(([brandName, brandProducts]) => (
           <div key={brandName}>
             <h2>{brandName}</h2>
-            <div className="product-grid">
-              {brandProducts.map((product) => (
-                <NormalProduct
-                  key={product.id}
-                  id={product.id}
-                  imgSrc={product.image_url}
-                  altText={product.name}
-                  productName={product.name}
-                  price={`$${product.price}`}
-                  rating="4.5" // You might want to add this to your API response
-                />
-              ))}
+            <div className="product-slider">
+              <button
+                className="scroll-button left"
+                onClick={() => scrollContainer(`slider-${brandName}`, 'left')}
+              >
+                &lt;
+              </button>
+              <div className="product-grid" id={`slider-${brandName}`}>
+                {brandProducts.map((product) => (
+                  <NormalProduct
+                    key={product.id}
+                    id={product.id}
+                    imgSrc={product.image_url}
+                    altText={product.name}
+                    productName={product.name}
+                    price={`$${product.price}`}
+                    rating="4.5"
+                  />
+                ))}
+              </div>
+              <button
+                className="scroll-button right"
+                onClick={() => scrollContainer(`slider-${brandName}`, 'right')}
+              >
+                &gt;
+              </button>
             </div>
           </div>
         ))}

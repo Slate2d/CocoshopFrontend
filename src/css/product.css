@@ -6,6 +6,8 @@
 .product-grid {
     display: flex;
     overflow-x: scroll;
+    
+    height: 300px;
     overflow-y: auto;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -139,4 +141,40 @@
     display: flex;
     gap: 8px;
     margin-top: 8px;
+  }
+
+  .icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .icon-button.cart-button.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+  
+  .icon-button.favourite-button.active {
+    background-color: #ff4081;
+    color: white;
+    border-color: #ff4081;
+  }
+  
+  .icon-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
   }

@@ -1,0 +1,84 @@
+/* Общий стиль для страницы ожидания верификации */
+.verify-pending-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Контейнер для страницы с верификацией */
+.verify-pending-box {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Стиль для иконки */
+.verify-pending-icon {
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: #e3f2fd;
+    display: inline-block;
+}
+
+/* Заголовок */
+.verify-pending-box h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Описание email */
+.verify-pending-box p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Список действий */
+.verify-pending-steps {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.verify-pending-steps h3 {
+    font-weight: bold;
+    color: #333;
+}
+
+.verify-pending-steps ol {
+    padding-left: 20px;
+    list-style-type: decimal;
+    color: #555;
+}
+
+/* Кнопка для повторной отправки письма */
+.verify-pending-resend-btn {
+    background-color: #2196f3;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Кнопка повторной отправки при наведении */
+.verify-pending-resend-btn:hover {
+    background-color: #1e88e5;
+}
+
+/* Сообщение для не полученного письма */
+.verify-pending-msg {
+    font-size: 14px;
+    color: #888;
+    margin-top: 15px;
+}

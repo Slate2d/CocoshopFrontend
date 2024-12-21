@@ -1,0 +1,65 @@
+/* Общий стиль для страницы верификации */
+.email-verification-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Контейнер страницы верификации */
+.email-verification-box {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Иконка для успешной или неуспешной верификации */
+.email-verification-icon {
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Заголовок страницы верификации */
+.email-verification-box h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Описание статуса верификации */
+.email-verification-box p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Кнопка для возврата к регистрации */
+.email-verification-back-btn {
+    background-color: #2196f3;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Кнопка возврата при наведении */
+.email-verification-back-btn:hover {
+    background-color: #1e88e5;
+}
+
+/* Сообщение о процессе верификации */
+.email-verification-loading-msg {
+    color: #888;
+    font-size: 14px;
+}
