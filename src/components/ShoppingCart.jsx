@@ -13,9 +13,17 @@ const ShoppingCart = () => {
     (async () => {
       try {
         const purchases = await getPurchases();
-        const items = purchases.map(({ id, product, product_name, product_price, quantity, product_brand, product_category }) => {
-          return <NormalProduct key={id} id={id} productName={product_name} price={product_price} quantity={quantity} />
-        })
+        const items = purchases.map(({ product_id, product_name, product_price, quantity, product_brand, product_category, product_image }) => {
+          return <NormalProduct 
+            key={product_id} 
+            id={product_id} 
+            productName={product_name} 
+            price={product_price} 
+            quantity={quantity}
+            imgSrc={product_image}
+            isInitiallyInCart={true} // Добавляем этот проп
+          />
+        });
         setCartItems(items);
       } catch (err) {
         setError("Не удалось загрузить данные корзины.");
@@ -23,7 +31,6 @@ const ShoppingCart = () => {
         setLoading(false);
       }
     })();
-
   }, []);
 
   if (loading) return <p>Загрузка...</p>;

@@ -14,17 +14,24 @@ const LikedPage = () => {
     (async () => {
       try {
         const purchases = await getFavourites();
-        const items = purchases.map(({ id, product, product_name, product_price, product_brand, product_category}) => {
-          return <NormalProduct key={id} id={id} productName={product_name} price={product_price} quantity={1} />
-        })
+        const items = purchases.map(({ product_id, product_name, product_price, quantity, product_brand, product_category, product_image }) => {
+          return <NormalProduct 
+            key={product_id} 
+            id={product_id} 
+            productName={product_name} 
+            price={product_price} 
+            quantity={quantity}
+            imgSrc={product_image}
+            isInitiallyInCart={true} // Добавляем этот проп
+          />
+        });
         setLikedItems(items);
       } catch (err) {
-        setError("Не удалось загрузить данные избранных товаров.");
+        setError("Не удалось загрузить данные корзины.");
       } finally {
         setLoading(false);
       }
     })();
-
   }, []);
   return (
     <div className="cart-container">

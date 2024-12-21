@@ -6,6 +6,7 @@
 .product-grid {
     display: flex;
     overflow-x: scroll;
+    overflow-y: auto;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
@@ -90,12 +91,52 @@
     height: 24px;
     transition: transform 0.3s; /* Плавная анимация для значка */
 }
-.cart-button.active {
-    background-color: green;
-    color: white;
-  }
   
   .favourite-button.active {
     background-color: red;
     color: white;
+  }
+  
+  .cart-button {
+    padding: 8px 8px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cart-button.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+  
+  .cart-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .favourite-button {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .favourite-button.active {
+    background-color: #ff4081;
+    color: white;
+    border-color: #ff4081;
+  }
+  
+  .favourite-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
   }

@@ -1,86 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './../css/stylemain.css';
 import '../css/product.css';
 import png2 from '../images/iPhone-13-Pro-Max-silver-1000x1000 1.png';
 import { useTranslation } from 'react-i18next';
 import CategoryProduct from './CategoryProduct';
 import NormalProduct from './NormalProduct';
+import { getProducts } from '../api/api';
 
 const MainPage = () => {
   const { t } = useTranslation();
-  const cases = [
-    {
-      imgSrc: require('../images/10.jpg'),
-      altText: 'Стеклянные Чехлы',
-      productName: 'Стеклянные',
-    },
-    {
-      imgSrc: require('../images/1.jpg'),
-      altText: 'Силиконовые Чехлы',
-      productName: 'Силиконовые',
-    },
-    {
-      imgSrc: require('../images/3.jpg'),
-      altText: 'Кожаные Чехлы',
-      productName: 'Кожаные',
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const headphones = [
-    {
-      imgSrc: require('../images/5.jpg'),
-      altText: 'Apple BYZ S852I',
-      productName: 'Apple BYZ S852I',
-      price: '52$',
-      oldPrice: '60$',
-      rating: '4.7',
-    },
-    {
-      imgSrc: require('../images/6.jpg'),
-      altText: 'Apple EarPods',
-      productName: 'Apple EarPods',
-      price: '50$',
-      rating: '4.5',
-    },
-    {
-      imgSrc: require('../images/7.jpg'),
-      altText: 'Apple EarPods Box',
-      productName: 'Apple EarPods Box',
-      price: '30$',
-      rating: '4.5',
-    },
-  ];
+  // Fetch products on component mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const data = await getProducts();
+        setProducts(data);
+      } catch (err) {
+        setError('Failed to fetch products');
+        console.error('Error fetching products:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const wirelessHeadphones = [
-    {
-      imgSrc: require('../images/8.jpg'),
-      altText: 'Apple BYZ S852I',
-      productName: 'Apple BYZ S852I',
-      price: '52$',
-      oldPrice: '60$',
-      rating: '4.7',
-    },
-    {
-      imgSrc: require('../images/9.jpg'),
-      altText: 'Apple EarPods',
-      productName: 'Apple EarPods',
-      price: '50$',
-      rating: '4.5',
-    },
-    {
-      imgSrc: require('../images/4.jpg'),
-      altText: 'Apple EarPods Box',
-      productName: 'Apple EarPods Box',
-      price: '30$',
-      rating: '4.5',
-    },
-  ];
+    fetchProducts();
+  }, []);
+
+  // Group products by brand
+  const groupedProducts = products.reduce((acc, product) => {
+    const brandName = product.brand.name;
+    if (!acc[brandName]) {
+      acc[brandName] = [];
+    }
+    acc[brandName].push(product);
+    return acc;
+  }, {});
+
+  if (loading) {
+    return <div className="loading">Loading products...</div>;
+  }
+
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
 
   return (
     <div>
       <div className="banner">
         <div className="text-container">
-          <h1>Аксессуары для iPhone 13 Pro Max</h1>
+          <h1>Аксессуары для Iphone 13 Pro Max</h1>
         </div>
         <div className="image-container">
           <img src={png2} alt="iPhone 13 Pro Max" />
@@ -88,26 +61,24 @@ const MainPage = () => {
       </div>
 
       <div className="container1">
-        <h2>{t ? t('mainPage.cases') : null}</h2>
-        <div className="product-grid">
-          {cases.map((product, index) => (
-            <CategoryProduct key={index} {...product} />
-          ))}
-        </div>
-
-        <h2>{t('mainPage.headphones')}</h2>
-        <div className="product-grid">
-          {headphones.map((product, index) => (
-            <NormalProduct key={index} {...product}  />
-          ))}
-        </div>
-
-        <h2>{t('mainPage.wirelessHeadphones')}</h2>
-        <div className="product-grid">
-          {wirelessHeadphones.map((product, index) => (
-            <NormalProduct key={index} {...product} />
-          ))}
-        </div>
+        {Object.entries(groupedProducts).map(([brandName, brandProducts]) => (
+          <div key={brandName}>
+            <h2>{brandName}</h2>
+            <div className="product-grid">
+              {brandProducts.map((product) => (
+                <NormalProduct
+                  key={product.id}
+                  id={product.id}
+                  imgSrc={product.image_url}
+                  altText={product.name}
+                  productName={product.name}
+                  price={`$${product.price}`}
+                  rating="4.5" // You might want to add this to your API response
+                />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

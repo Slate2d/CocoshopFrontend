@@ -1,60 +1,90 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../css/product.css';
-import { addToCart, deleteFromCart, addToFavourites, removeFromFavourites } from '../api/api';
+import { addToCart, deleteAllFromCart, addToFavourites, removeFromFavourites, checkFavourites, checkCart } from '../api/api';
 
-const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, id }) => {
-  const [isInCart, setIsInCart] = useState(false); // состояние для корзины
-  const [isFavourite, setIsFavourite] = useState(false); // состояние для избранного
+const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, id, isInitiallyInCart = false }) => {
+  const [isInCart, setIsInCart] = useState(isInitiallyInCart);
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadProductState = async () => {
+      try {
+        const [cartResponse, favouriteResponse] = await Promise.all([
+          !isInitiallyInCart ? checkCart(id) : { isInCart: true },
+          checkFavourites(id)
+        ]);
+
+        setIsInCart(cartResponse.isInCart);
+        setIsFavourite(favouriteResponse.isFavourite);
+      } catch (err) {
+        setError("Failed to load product state");
+        console.error("Error loading product state:", err);
+      }
+    };
+
+    loadProductState();
+  }, [id, isInitiallyInCart]);
 
   const handleCartClick = async () => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    setError(null);
+    
     try {
       if (isInCart) {
-        // Удаляем из корзины
-        await deleteFromCart({ productId: id });
+        await deleteAllFromCart(id);
         setIsInCart(false);
-        console.log("Товар удален из корзины");
       } else {
-        // Добавляем в корзину
-        await addToCart({ productId: id });
+        await addToCart(id);
         setIsInCart(true);
-        console.log("Товар добавлен в корзину");
       }
-    } catch (error) {
-      console.error("Ошибка при изменении состояния корзины:", error);
+    } catch (err) {
+      setError("Failed to update cart");
+      console.error("Error updating cart:", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleFavouriteClick = async () => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    setError(null);
+    
     try {
       if (isFavourite) {
-        // Удаляем из избранного
-        await removeFromFavourites({ productId: id });
+        await removeFromFavourites(id);
         setIsFavourite(false);
-        console.log("Товар удален из избранного");
       } else {
-        // Добавляем в избранное
-        await addToFavourites({ productId: id });
+        await addToFavourites(id);
         setIsFavourite(true);
-        console.log("Товар добавлен в избранное");
       }
-    } catch (error) {
-      console.error("Ошибка при изменении состояния избранного:", error);
+    } catch (err) {
+      setError("Failed to update favorites");
+      console.error("Error updating favorites:", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="product-card">
-      <a href="#">
-        <img className="product-image" src={imgSrc} alt={altText} />
-        <p>{productName}</p>
+      <div className="product-link">
+        <img className="product-image" src={imgSrc} alt={altText || productName} />
+        <p className="product-name">{productName}</p>
         <div className="product-info">
           {rating && <span className="rating">{rating}</span>}
           {price && (
             <span className="price">
               {oldPrice ? (
                 <>
-                  <span className="sale">{price}</span> <span className="old-price">{oldPrice}</span>
+                  <span className="sale">{price}</span>
+                  <span className="old-price">{oldPrice}</span>
                 </>
               ) : (
                 price
@@ -62,19 +92,24 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, 
             </span>
           )}
         </div>
-      </a>
+      </div>
+      
+      {error && <div className="error-message">{error}</div>}
+      
       <div className="button-container">
         <button
           className={`cart-button ${isInCart ? 'active' : ''}`}
           onClick={handleCartClick}
+          disabled={isLoading}
         >
-          {isInCart ? 'Убрать из корзины' : 'Добавить в корзину'}
+          {isLoading ? 'Loading...' : (isInCart ? 'Remove from Cart' : 'Add to Cart')}
         </button>
         <button
           className={`favourite-button ${isFavourite ? 'active' : ''}`}
           onClick={handleFavouriteClick}
+          disabled={isLoading}
         >
-          {isFavourite ? 'Убрать из избранного' : 'Добавить в избранное'}
+          {isLoading ? 'Loading...' : (isFavourite ? 'Remove from Favorites' : 'Add to Favorites')}
         </button>
       </div>
     </div>
@@ -82,13 +117,14 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, 
 };
 
 NormalProduct.propTypes = {
-  imgSrc: PropTypes.string,
+  imgSrc: PropTypes.string.isRequired,
   altText: PropTypes.string,
-  productName: PropTypes.string,
-  price: PropTypes.string,
+  productName: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
   oldPrice: PropTypes.string,
   rating: PropTypes.string,
   id: PropTypes.number.isRequired,
+  isInitiallyInCart: PropTypes.bool
 };
 
 export default NormalProduct;
