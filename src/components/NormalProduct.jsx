@@ -7,9 +7,16 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
-
+  const handleProductClick = (e) => {
+    // Prevent navigation if clicking on cart or favorite buttons
+    if (e.target.closest('.button-container')) {
+      return;
+    }
+    window.location.href = `/product/${id}`;
+  };
   useEffect(() => {
     let isMounted = true;
+
 
     const loadProductState = async () => {
       if (!localStorage.getItem('access_token')) {
@@ -132,31 +139,32 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, 
     }
   };
 
-  return (
-    <div className="product-card">
-      <div className="product-link">
-        <img className="product-image" src={imgSrc} alt={altText || productName} />
-        <p className="product-name">{productName}</p>
-        <div className="product-info">
-          {rating && <span className="rating">{rating}</span>}
-          {price && (
-            <span className="price">
-              {oldPrice ? (
-                <>
-                  <span className="sale">{price}</span>
-                  <span className="old-price">{oldPrice}</span>
-                </>
-              ) : (
-                price
-              )}
-            </span>
-          )}
-        </div>
+      
+ return (
+  <div className="product-card">
+    <div className="product-link cursor-pointer" onClick={handleProductClick}>
+      <img className="product-image" src={imgSrc} alt={altText || productName} />
+      <p className="product-name">{productName}</p>
+      <div className="product-info">
+        {rating && <span className="rating">{rating}</span>}
+        {price && (
+          <span className="price">
+            {oldPrice ? (
+              <>
+                <span className="sale">{price}</span>
+                <span className="old-price">{oldPrice}</span>
+              </>
+            ) : (
+              price
+            )}
+          </span>
+        )}
       </div>
-      
-      {error && <div className="error-message">{error}</div>}
-      
-      <div className="button-container">
+    </div>
+    
+    {error && <div className="error-message">{error}</div>}
+    
+    <div className="button-container">
         <button
           className={`icon-button cart-button ${isInCart && isInitialized ? 'active' : ''}`}
           onClick={handleCartClick}
@@ -185,9 +193,10 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, 
             />
           )}
         </button>
-      </div>
     </div>
-  );
+  </div>
+);
 };
+
 
 export default NormalProduct;

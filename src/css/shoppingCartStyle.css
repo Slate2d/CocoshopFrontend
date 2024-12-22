@@ -44,7 +44,7 @@
     text-align: center;
     margin-right: 30px;
     margin-left: 30px;
-    margin-top: 0px;
+    margin-top: 20px;
 }
 
 .product-image {
@@ -149,23 +149,10 @@
     .logo-link:hover .logo {
         color: #e67e22; /* Опционально: изменяем цвет при наведении */
     }
-
-/* Псевдоэлемент для стрелки */
-.custom-select::after {
-    content: '\25BC'; /* Стрелка вниз */
-    position: absolute;
-    right: 10px;
-    font-size: 12px;
-    color: #333;
-}
-
-/* Стили для иконок */
 .icons {
     display: flex;
     align-items: center;
-    margin-right: 20px;
 }
-
 .icon {
     position: relative;
     margin-left: 20px;
@@ -176,10 +163,31 @@
     /* background: red; */
     width: 50px;
 }
+.icon_cart_relative {
+    padding: 10px;
+}
+.icon_wishlist_relative {
+    padding: 10px;
+}
+.icons1 {
+    display: flex;
+    align-items: center;
+    justify-items: center;
 
+}
+.wishSpan {
+    font-size: 24px;
+    padding: 7px;
+    align-items: center;
+}
+.cartSpan {
+    font-size: 24px;
+    padding: 7px;
+}
 .icon.cart {
-    height: 50px;
-    /* width: 50px; */
+    display: flex;
+    align-items: center;
+
     overflow: visible;
 }
 
@@ -314,4 +322,54 @@ a:hover p, a:focus p {
 
 .active-lang {
     color: #e67e22;
+}
+
+.cart-summary {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.total-price h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.total-price span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-button:hover {
+  background-color: #0056b3;
+}
+
+.checkout-button:active {
+  transform: translateY(1px);
 }

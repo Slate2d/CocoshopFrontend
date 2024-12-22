@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, ShoppingCart } from 'lucide-react';
+import SearchBar from './SearchBar';  // Import the new SearchBar component
 
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -48,30 +49,26 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <a href="/"><h1>COCO SHOP</h1></a>
+        <Link to="/"><h1>COCO SHOP</h1></Link>
       </div>
-      <div className="SELECTOR">
-        <i className="phone-icon">&#128241;</i>
-        <select>
-          <option value="">Выбрать модель телефона</option>
-          <option value="1">Samsung</option>
-          <option value="2">Poco</option>
-          <option value="3">Lenovo</option>
-        </select>
-      </div>
-      <div className="icons">
-        <Link to="/liked" className="icon wishlist relative">
+      
+      <SearchBar /> {/* Add the SearchBar component here */}
+      
+
+      
+      <div className="icons1">
+        <Link to="/liked" className="icon_wishlist_relative">
           <Heart className="w-6 h-6" />
           {favouritesCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            <span className="wishSpan">
               {favouritesCount}
             </span>
           )}
         </Link>
-        <Link to="/cart" className="icon cart relative">
+        <Link to="/cart" className="icon_cart_relative">
           <ShoppingCart className="w-6 h-6" />
           {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            <span className="cartSpan">
               {cartCount}
             </span>
           )}

@@ -13,21 +13,25 @@
     align-items: center;
     overflow: hidden;
     margin-bottom: 20px;
-  }
-  
-  .product-grid {
+    padding: 0 50px; /* Добавляем отступы для кнопок */
+}
+
+.product-grid {
     display: flex;
-    overflow-x: auto;
     scroll-behavior: smooth;
-    gap: 10px;
+    gap: 20px;
     padding: 10px;
-  }
-  
-  .product-grid::-webkit-scrollbar {
-    display: none; /* Hide scrollbar */
-  }
-  
-  .scroll-button {
+    flex-wrap: nowrap; /* Предотвращаем перенос элементов */
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.product-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-button {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 50%;
@@ -39,18 +43,24 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: 2;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .scroll-button.left {
-    left: 10px;
-  }
-  
-  .scroll-button.right {
-    right: 10px;
-  }
+    transition: all 0.3s ease;
+}
+
+.scroll-button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-button.left {
+    left: 5px;
+}
+
+.scroll-button.right {
+    right: 5px;
+}
   
 a {
     text-decoration: none; /* Убираем подчеркивание */
@@ -280,3 +290,85 @@ footer {
     color: #e67e22;
     transition: color 0.3s ease;
 }
+
+/* .search-container {
+    position: relative;
+    width: 300px;
+    margin: 0 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #e8e8e8;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 5px rgba(230, 126, 34, 0.3);
+  }
+  
+  .search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .suggestion-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f8f8f8;
+  }
+  
+  .suggestion-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .suggestion-details {
+    flex: 1;
+  }
+  
+  .suggestion-name {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 2px;
+  }
+  
+  .suggestion-price {
+    font-size: 12px;
+    color: #e67e22;
+    font-weight: bold;
+  }
+  
+  .loading-indicator {
+    text-align: center;
+    padding: 10px;
+    color: #666;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+  } */

@@ -40,17 +40,19 @@ const MainPage = () => {
 
   const scrollContainer = (id, direction) => {
     const container = document.getElementById(id);
-    const scrollAmount = direction === 'left' ? -300 : 300;
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    if (!container) return;
+    
+    const scrollAmount = 300;
+    const currentScroll = container.scrollLeft;
+    const newScroll = direction === 'left' 
+      ? currentScroll - scrollAmount 
+      : currentScroll + scrollAmount;
+    
+    container.scrollTo({
+      left: newScroll,
+      behavior: 'smooth'
+    });
   };
-
-  if (loading) {
-    return <div className="loading">Loading products...</div>;
-  }
-
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
 
   return (
     <div>
@@ -68,31 +70,44 @@ const MainPage = () => {
           <div key={brandName}>
             <h2>{brandName}</h2>
             <div className="product-slider">
-              <button
-                className="scroll-button left"
-                onClick={() => scrollContainer(`slider-${brandName}`, 'left')}
+              {brandProducts.length > 4 && ( // Показываем кнопки только если есть что скроллить
+                <>
+                  <button
+                    className="scroll-button left"
+                    onClick={() => scrollContainer(`slider-${brandName}`, 'left')}
+                  >
+                    &#8249;
+                  </button>
+                  <button
+                    className="scroll-button right"
+                    onClick={() => scrollContainer(`slider-${brandName}`, 'right')}
+                  >
+                    &#8250;
+                  </button>
+                </>
+              )}
+              <div 
+                className="product-grid" 
+                id={`slider-${brandName}`}
+                style={{ 
+                  display: 'flex',
+                  overflowX: 'auto',
+                  scrollSnapType: 'x mandatory'
+                }}
               >
-                &lt;
-              </button>
-              <div className="product-grid" id={`slider-${brandName}`}>
                 {brandProducts.map((product) => (
-                  <NormalProduct
-                    key={product.id}
-                    id={product.id}
-                    imgSrc={product.image_url}
-                    altText={product.name}
-                    productName={product.name}
-                    price={`$${product.price}`}
-                    rating="4.5"
-                  />
+                  <div key={product.id} style={{ flex: '0 0 auto', scrollSnapAlign: 'start' }}>
+                    <NormalProduct
+                      id={product.id}
+                      imgSrc={product.image_url}
+                      altText={product.name}
+                      productName={product.name}
+                      price={`$${product.price}`}
+                      rating="4.5"
+                    />
+                  </div>
                 ))}
               </div>
-              <button
-                className="scroll-button right"
-                onClick={() => scrollContainer(`slider-${brandName}`, 'right')}
-              >
-                &gt;
-              </button>
             </div>
           </div>
         ))}

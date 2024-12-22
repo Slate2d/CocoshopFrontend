@@ -13,7 +13,11 @@ import TermsPage from "./components/TermsOfService";
 import ContactsPage from "./components/ContactsPage";
 import EmailVerificationPage from "./components/EmailVerificationPage";
 import VerifyPendingPage from "./components/VerifyPendingPage";
-
+import ProductDetail from "./components/ProductDetailPage";
+import ChatWindow from './components/ChatWindow';
+import OrderConfirmation from "./components/OrderConfirmation"
+import "./css/chat.css"
+import CheckoutPage from "./components/CheckOut";
 const App = () => {
  
   useEffect(() => {
@@ -31,14 +35,20 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <ChatWindow />
+
       <Router>
         <Header />
         <Routes>
+          <Route path="/order-confirmation/:id" element={<OrderConfirmation />} />
+          <Route path="/checkout/" element={<CheckoutPage />} />
+
           <Route path="/" element={<MainPage />} />
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/liked" element={<LikedPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/verify-pending" element={<VerifyPendingPage />} />
           <Route path="/verify-email/:token" element={<EmailVerificationPage />} />
           <Route path="/terms" element={<TermsPage />} />

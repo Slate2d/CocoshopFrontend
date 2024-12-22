@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { getPurchases } from "../api/api";
 import "./../css/shoppingCartStyle.css";
-import "../css/product.css"
+import "../css/product.css";
 import NormalProduct from "./NormalProduct";
 
 const ShoppingCart = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    (async () => {
+    const fetchCartData = async () => {
       try {
         const purchases = await getPurchases();
         const items = purchases.map(({ product_id, product_name, product_price, quantity, product_brand, product_category, product_image }) => {
@@ -21,17 +24,27 @@ const ShoppingCart = () => {
             price={product_price} 
             quantity={quantity}
             imgSrc={product_image}
-            isInitiallyInCart={true} // Добавляем этот проп
+            isInitiallyInCart={true}
           />
         });
+        
+        // Calculate total price
+        const total = purchases.reduce((sum, item) => sum + (item.product_price * item.quantity), 0);
+        setTotalPrice(total);
         setCartItems(items);
       } catch (err) {
         setError("Не удалось загрузить данные корзины.");
       } finally {
         setLoading(false);
       }
-    })();
+    };
+
+    fetchCartData();
   }, []);
+
+  const handleCheckout = () => {
+    navigate('/checkout');
+  };
 
   if (loading) return <p>Загрузка...</p>;
   if (error) return <p>{error}</p>;
@@ -50,21 +63,19 @@ const ShoppingCart = () => {
     <div className="cart-container">
       <h1 className="cart-header">Корзина</h1>
       <div className="cart">
-        {/* {cartItems.map((item) => (
-          <div key={item.id} className="cart-card">
-            <img
-              src={item.product_image || "https://drive.google.com/uc?export=view&id=1Y2CDkTcz6-bq3Cyj3FaUy6VFo-UM7zN2"}
-              alt={item.product_name}
-              className="cart-card-image"
-            />
-            <div className="cart-card-details">
-              <h2>{item.product_name}</h2>
-              <p>Цена: {item.price} руб.</p>
-              <p>Количество: {item.quantity}</p>
-            </div>
-          </div>
-        ))} */}
         {cartItems}
+      </div>
+      <div className="cart-summary">
+        <div className="total-price">
+          <h3>Итого:</h3>
+          <span>${totalPrice.toFixed(2)}</span>
+        </div>
+        <button 
+          className="checkout-button"
+          onClick={handleCheckout}
+        >
+          Оформить заказ
+        </button>
       </div>
     </div>
   );

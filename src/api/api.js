@@ -113,3 +113,19 @@ export const checkCart = async (id) => {
     return { isInCart: false };
   }
 };
+export const createOrderFromCart = async (orderData) => {
+  const response = await fetch('http://localhost:8000/shop/orders/create_from_cart/', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderData)
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to create order');
+  }
+
+  return response.json();
+};
