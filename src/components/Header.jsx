@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingCart } from 'lucide-react';
+import { Heart, LogIn, ShoppingCart, User } from 'lucide-react';
 import SearchBar from './SearchBar';  // Import the new SearchBar component
 
 const Header = () => {
@@ -52,11 +52,14 @@ const Header = () => {
         <Link to="/"><h1>COCO SHOP</h1></Link>
       </div>
       
-      <SearchBar /> {/* Add the SearchBar component here */}
-      
-
-      
+      <SearchBar />    
       <div className="icons1">
+        <Link to="/login">
+        <LogIn />
+        </Link>
+        <Link to="/register">
+        <User />
+        </Link>
         <Link to="/liked" className="icon_wishlist_relative">
           <Heart className="w-6 h-6" />
           {favouritesCount > 0 && (
