@@ -26,19 +26,31 @@ const ChatWindow = () => {
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
         }
       });
+      
+      if (!response.ok) {
+        // If chat room not found, remove the invalid ID
+        localStorage.removeItem('chatRoomId');
+        return;
+      }
+  
       const room = await response.json();
       setChatRoom(room);
       
-      // Load messages
       const messagesResponse = await fetch(`http://localhost:8000/api/chat/${roomId}/messages/`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
         }
       });
-      const messagesData = await messagesResponse.json();
-      setMessages(messagesData);
+      
+      if (messagesResponse.ok) {
+        const messagesData = await messagesResponse.json();
+        setMessages(Array.isArray(messagesData) ? messagesData : []);
+      } else {
+        setMessages([]);
+      }
     } catch (error) {
       console.error('Error loading chat:', error);
+      setMessages([]);
     } finally {
       setLoading(false);
     }

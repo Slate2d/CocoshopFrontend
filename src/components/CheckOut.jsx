@@ -92,7 +92,11 @@ const CheckoutPage = () => {
         }
       
         try {
-          const orderResult = await createOrderFromCart(orderData);
+          const submitData = {
+            ...orderData,
+            total_price: totalPrice  // добавьте это поле
+          };
+          const orderResult = await createOrderFromCart(submitData);
           navigate(`/order-confirmation/${orderResult.id}`);
         } catch (err) {
           setError('Failed to create order. Please try again.');

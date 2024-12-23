@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./../css/login.css"; // Стили для страницы
-
-const API_BASE_URL = "http://localhost:8000"; // Укажите ваш базовый URL
+import { useNavigate, Link } from "react-router-dom";
+import "./../css/login.css";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -16,29 +14,25 @@ const LoginPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/shop/login/`, {
+      const response = await axios.post(`http://localhost:8000/shop/login/`, {
         username,
         password,
       });
 
       if (response.data.status === "success") {
-        // Сохранение токенов в localStorage
         const { access, refresh } = response.data.tokens;
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
-
-        // Перенаправление на домашнюю страницу
         navigate("/");
       } else {
         setError(response.data.message || "Ошибка авторизации");
       }
     } catch (err) { 
-        if (err.response && err.response.status === 401){
-            setError("Неверное имя пользователя или пароль. Пожалуйста, попробуйте еще раз.");
-        }
-            else { 
-                setError("Ошибка соединения с сервером.");
-        }
+      if (err.response && err.response.status === 401) {
+        setError("Неверное имя пользователя или пароль. Пожалуйста, попробуйте еще раз.");
+      } else { 
+        setError("Ошибка соединения с сервером.");
+      }
     }
   };
 
@@ -69,6 +63,9 @@ const LoginPage = () => {
         {error && <p className="error-message">{error}</p>}
         <button type="submit" className="btn">Войти</button>
       </form>
+      <div className="register-prompt">
+        <p>Нет аккаунта? <Link to="/register" className="register-link">Зарегистрируйтесь</Link></p>
+      </div>
     </div>
   );
 };

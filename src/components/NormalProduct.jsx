@@ -155,7 +155,7 @@ const NormalProduct = ({ imgSrc, altText, productName, price, oldPrice, rating, 
                 <span className="old-price">{oldPrice}</span>
               </>
             ) : (
-              price
+              `$${price}`
             )}
           </span>
         )}

@@ -102,7 +102,7 @@ const MainPage = () => {
                       imgSrc={product.image_url}
                       altText={product.name}
                       productName={product.name}
-                      price={`$${product.price}`}
+                      price={product.price}
                       rating="4.5"
                     />
                   </div>

@@ -17,6 +17,7 @@ import ProductDetail from "./components/ProductDetailPage";
 import ChatWindow from './components/ChatWindow';
 import OrderConfirmation from "./components/OrderConfirmation"
 import "./css/chat.css"
+import './css/auth.css';
 import CheckoutPage from "./components/CheckOut";
 const App = () => {
  

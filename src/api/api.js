@@ -9,8 +9,40 @@ const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Accept': 'application/json',
-  }
+  },
+  withCredentials: true // This is important for CSRF
 });
+
+// Add request interceptor to handle authorization
+api.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  
+  // Get CSRF token from cookie
+  const csrfToken = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('csrftoken='))
+    ?.split('=')[1];
+    
+  if (csrfToken) {
+    config.headers['X-CSRFToken'] = csrfToken;
+  }
+  
+  return config;
+});
+
+// Update createOrderFromCart to use axios instance
+export const createOrderFromCart = async (orderData) => {
+  try {
+    const response = await api.post('/api/orders/create_from_cart/', orderData);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating order:", error);
+    throw error;
+  }
+};
 // Add this to api.js
 export const getProducts = async () => {
   try {
@@ -113,19 +145,14 @@ export const checkCart = async (id) => {
     return { isInCart: false };
   }
 };
-export const createOrderFromCart = async (orderData) => {
-  const response = await fetch('http://localhost:8000/shop/orders/create_from_cart/', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(orderData)
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to create order');
+function getCSRFToken() {
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith('csrftoken=')) {
+      return cookie.substring('csrftoken='.length, cookie.length);
+    }
   }
+  return null;
+}
 
-  return response.json();
-};

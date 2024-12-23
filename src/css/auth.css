@@ -1,0 +1,76 @@
+/* Auth Buttons Styles */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    margin-right: 20px;
+  }
+  
+  .auth-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .login-button {
+    background-color: transparent;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+  }
+  
+  .login-button:hover {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  .register-button {
+    background-color: #007BFF;
+    color: white;
+    border: 2px solid #007BFF;
+  }
+  
+  .register-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .logout-button {
+    background-color: #dc3545;
+    color: white;
+    border: 2px solid #dc3545;
+    margin-right: 20px;
+  }
+  
+  .logout-button:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+  }
+  
+  /* Register Prompt Styles */
+  .register-prompt {
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #eee;
+  }
+  
+  .register-prompt p {
+    color: #666;
+    margin: 0;
+  }
+  
+  .register-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
