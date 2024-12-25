@@ -71,14 +71,15 @@
 Приложение будет доступно по адресу http://localhost:3000.
 
 ### Docker
+
 Вы можете запустить приложение с использованием Docker.
 
 1. Соберите Docker-образ:
 
    ```bash
-    docker build -t cocoshop-frontend .
+   docker build -t cocoshop-frontend .
 
 2. Запустите контейнер:
 
    ```bash
-    docker run -p 3000:3000 cocoshop-frontend
+   docker run -p 3000:3000 cocoshop-frontend
