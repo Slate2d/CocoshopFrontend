@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# CocoshopFrontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CocoshopFrontend Logo](path_to_your_logo_image)
 
-## Available Scripts
+## Описание
 
-In the project directory, you can run:
+**CocoshopFrontend** — это фронтенд-часть онлайн-магазина, разработанная с использованием React. Этот проект предоставляет пользователям удобный интерфейс для просмотра и покупки товаров.
 
-### `npm start`
+## Страницы магазина
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. ![Главная страница](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153824.png)
+2. ![Логин](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153705.png)
+3. ![Регистрация](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153731.png)
+4. ![Избранное](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153836.png)
+5. ![Корзина](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153848.png)
+6. ![Оформление закакза](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153924.png)
+7. ![Контакты](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20154017.png)
+8. ![Поиск по сайту](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153955.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Функциональные возможности
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Просмотр списка товаров
+- Поиск и фильтрация товаров
+- Просмотр деталей товара
+- Добавление товаров в корзину
+- Оформление заказа
+- Регистрация и авторизация пользователей
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Технологии
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Redux (если используется)
+- React Router
+- Axios (для HTTP-запросов)
+- Bootstrap / Material-UI (или другая библиотека компонентов)
 
-### `npm run eject`
+## Установка
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Клонируйте репозиторий:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+    git clone https://github.com/Slate2d/CocoshopFrontend.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Перейдите в директорию проекта:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+    cd CocoshopFrontend
 
-## Learn More
+3. Установите зависимости
+  ```bash
+    npm install
+4. Запустите сервер
+5. Запуск приложения
+  ```bash
+    npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Приложение будет доступно по адресу http://localhost:3000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Docker
+Вы можете запустить приложение с использованием Docker.
 
-### Code Splitting
+1. Соберите Docker-образ:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+bash
+docker build -t cocoshop-frontend .
 
-### Analyzing the Bundle Size
+2. Запустите контейнер:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+bash
+Копировать код
+docker run -p 3000:3000 cocoshop-frontend
