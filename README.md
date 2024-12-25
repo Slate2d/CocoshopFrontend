@@ -75,11 +75,10 @@
 
 1. Соберите Docker-образ:
 
-bash
-docker build -t cocoshop-frontend .
+   ```bash
+    docker build -t cocoshop-frontend .
 
 2. Запустите контейнер:
 
-bash
-Копировать код
-docker run -p 3000:3000 cocoshop-frontend
+   ```bash
+    docker run -p 3000:3000 cocoshop-frontend
