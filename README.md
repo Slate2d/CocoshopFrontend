@@ -16,6 +16,8 @@
 ![Регистрация](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153731.png)
 4. **Избранное**
  ![Избранное](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153836.png)
+ 4. **Информация о продукте**
+ ![Информация о продукте](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/image.png)
 5. **Корзина**
  ![Корзина](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153848.png)
 6. **Оформление заказа**
