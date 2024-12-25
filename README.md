@@ -61,12 +61,15 @@
 
 3. Установите зависимости
 
-    npm install
+   ```bash
+   npm install
 
 4. Запустите сервер
 
 5. Запуск приложения
-    npm start
+
+   ```bash
+   npm start
 
 Приложение будет доступно по адресу http://localhost:3000.
 
