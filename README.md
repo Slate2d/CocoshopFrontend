@@ -60,10 +60,14 @@
     cd CocoshopFrontend
 
 3. Установите зависимости
+
   ```bash
     npm install
+
 4. Запустите сервер
+
 5. Запуск приложения
+
   ```bash
     npm start
 
