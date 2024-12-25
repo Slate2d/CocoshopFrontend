@@ -8,14 +8,22 @@
 
 ## Страницы магазина
 
-1. ![Главная страница](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153824.png)
-2. ![Логин](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153705.png)
-3. ![Регистрация](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153731.png)
-4. ![Избранное](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153836.png)
-5. ![Корзина](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153848.png)
-6. ![Оформление закакза](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153924.png)
-7. ![Контакты](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20154017.png)
-8. ![Поиск по сайту](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153955.png)
+1. **Главная страница**
+![Главная страница](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153824.png)
+2. **Главная страница**
+![Логин](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153705.png)
+3. **Главная страница**
+![Регистрация](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153731.png)
+4. **Главная страница**
+ ![Избранное](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153836.png)
+5. **Главная страница**
+ ![Корзина](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153848.png)
+6. **Главная страница**
+ ![Оформление закакза](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153924.png)
+7.  **Главная страница**
+![Контакты](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20154017.png)
+8. **Главная страница**
+ ![Поиск по сайту](https://github.com/Nikolay-Bezmen/CocoJamboShop/blob/main/cocoshop/assets/Screenshot%202024-12-23%20153955.png)
 
 
 
